@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="highscores">
+            <a href="highscore.html">View Highscores</a>
+        </div>
+        <div class="time">
+            <h4>Time: 0</h4>
+        </div>
+    </header>
+
+    <div id="start-page">
+        <section>
+            <h1>Coding Quiz Challenge</h1>
+            <p>Try to answer the following code-related questions within the time limit. Remember! Wrong answers will cause your time to be reduced by 15 seconds.</p>
+        </section>
+
+        <div id="button-container">
+            <button class="buttons" id="start" type="button">
+                Start
+            </button>
+        </div>
+    </div> 
+
+    <div id="questions-container">
+
+        <div> <h3 id='questions'>your question is here</h3> </div>
+
+        <ul>
+            <li><button class="buttons" id="button1" type="button">
+            <p id='answerA'></p> 
+            </button>
+            </li>
+
+            <li><button class="buttons" id="button2" type="button">
+             <p id='answerB'></p>
+            </button>
+            </li>
+
+            <li><button class="buttons" id="button3" type="button">
+            <p id='answerC'></p>
+            </button>
+            </li>
+
+            <li><button class="buttons" id="button4" type="button">
+            <p id='answerD'></p>
+            </button>
+            </li>
+        </ul>
+
+    </div>
+    
+</body>
+<script src="./assets/js/script.js"></script>
+</html>

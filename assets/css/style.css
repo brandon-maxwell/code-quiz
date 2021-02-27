@@ -1,0 +1,90 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.highscores {
+    text-align: left;
+    padding-left: 2%;
+    padding-top: 2%;
+
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.time {
+    text-align: right;
+    padding-right: 5%;
+    padding-top: 2%;
+}
+
+section {
+    padding-top: 5%;
+    text-align: center;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    padding-top: 10%;
+    padding-bottom: 1%;
+    font-size: 30px;
+    text-align: center;
+}
+
+p {
+    padding: 2% 10%;
+}
+
+#button-container {
+    padding-top: 3%;
+    text-align: center;
+}
+
+#questions-container {
+    display: none;
+    text-align: center;
+}
+
+#questions {
+    padding-top: 10%;
+    padding-bottom: 3%;
+    font-size: 30px;
+    text-align: center;
+}
+
+.buttons {
+    white-space: nowrap;
+    border:0;
+    line-height: 2.5;
+    padding: 0 20px;
+    text-align: center;
+    font-size: 1rem;
+    text-align: center;
+    color:#fff;
+    border-radius: 10px;
+    text-shadow: 1px 1px 1px #000;
+    background-color: blue;
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.buttons
+
+.buttons:hover {
+    background-color: blueviolet;
+}
