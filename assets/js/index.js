@@ -12,6 +12,20 @@ var counter = 0;
 var currentTime = 0;
 var countDownInt = 75;
 var score = document.getElementById('userScore');
+var timeInterval = setInterval(function(){
+    countDownInt--;
+    timer.textContent = "Time: " + countDownInt;
+    if (counter === 5) {
+        clearInterval (timeInterval);
+        score.textContent = "Your score is " + countDownInt;
+    }
+    else if (countDownInt < 1) {
+        clearInterval (timeInterval);
+        questionContainer.style.display = "none";
+        resultsContainer.style.display = "block";       
+        score.textContent = "Your score is " + 0;
+    }
+}, 1000);
 var questions = [
     {
         question: "Which one of these creates a variable?",
@@ -80,7 +94,7 @@ startButton.addEventListener("click", function (event) {
 })
 
 function timePenalty() {
-    countDownInt -15;
+    countDownInt -=15;
 }
 
 function nextQuestion() {
