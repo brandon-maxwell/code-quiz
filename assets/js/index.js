@@ -11,7 +11,7 @@ var resultsContainer = document.getElementById('results');
 var counter = 0;
 var currentTime = 0;
 var countDownInt = 75;
-var endGame = document.getElementById('userScore');
+var score = document.getElementById('userScore');
 
 var questions = [
     {
@@ -66,7 +66,10 @@ startButton.addEventListener("click", function (event) {
     var timeInterval = setInterval(function(){
         countDownInt--;
         timer.textContent = "Time: " + countDownInt;
-        if (countDownInt < 1) {
+        if (counter === 5) {
+            clearInterval (timeInterval);
+        }
+        else if (countDownInt < 1) {
             clearInterval (timeInterval);
         }
     }, 1000);
@@ -85,8 +88,7 @@ function nextQuestion() {
     answer4.innerText = questions[counter].d;
     if (counter === 5) {
         questionContainer.style.display = "none";
-        resultsContainer.style.display = "block";
-        
+        resultsContainer.style.display = "block";   
     }
 }
 
