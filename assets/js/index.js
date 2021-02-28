@@ -7,9 +7,11 @@ var answer4 = document.getElementById('answerD');
 var question = document.getElementById('questions');
 var startContainer = document.getElementById('start-page'); 
 var questionContainer = document.getElementById('questions-container');
+var resultsContainer = document.getElementById('results');
 var counter = 0;
 var currentTime = 0;
 var countDownInt = 75;
+var endGame = document.getElementById('userScore');
 
 var questions = [
     {
@@ -52,7 +54,24 @@ var questions = [
         d: 'countDown',
         correctAnswer: 'setTimeout'
     },
+    {
+        question: ""
+    },
 ]
+
+//Starts Game - Clears h1/p/start button & adds questions/options & starts timer
+startButton.addEventListener("click", function (event) {
+    startContainer.style.display = "none";
+    questionContainer.style.display = "block";
+    var timeInterval = setInterval(function(){
+        countDownInt--;
+        timer.textContent = "Time: " + countDownInt;
+        if (countDownInt < 1) {
+            clearInterval (timeInterval);
+        }
+    }, 1000);
+    
+})
 
 function timePenalty() {
     (document.getElementById('time') -15);
@@ -64,6 +83,11 @@ function nextQuestion() {
     answer2.innerText = questions[counter].b;
     answer3.innerText = questions[counter].c;
     answer4.innerText = questions[counter].d;
+    if (counter === 5) {
+        questionContainer.style.display = "none";
+        resultsContainer.style.display = "block";
+        
+    }
 }
 
 nextQuestion()
@@ -75,7 +99,7 @@ answer1.addEventListener("click", function (event) {
     } else {
         //time penalty ==> decrementing currentTime = currentTime - 15
         console.log('you got the wrong answer');
-        timePenalty()
+        timePenalty();
     }
     counter++;
     nextQuestion()
@@ -86,7 +110,7 @@ answer2.addEventListener("click", function (event) {
         console.log('you got the correct answer')
     } else {
         console.log('you got the wrong answer');
-        timePenalty()
+        timePenalty();
     }
     counter++;
     nextQuestion()
@@ -97,7 +121,7 @@ answer3.addEventListener("click", function (event) {
         console.log('you got the correct answer')
     } else {
         console.log('you got the wrong answer');
-        timePenalty()
+        timePenalty();
     }
     counter++;
     nextQuestion()
@@ -108,55 +132,27 @@ answer4.addEventListener("click", function (event) {
         console.log('you got the correct answer')
     } else {
         console.log('you got the wrong answer');
-        timePenalty()
+        timePenalty();
     }
     counter++;
     nextQuestion()
 })
 
-//Starts Game - Clears h1/p/start button & adds questions/options & starts timer
-startButton.addEventListener("click", function (event) {
-    startContainer.style.display = "none";
-    questionContainer.style.display = "block";
-    var timeInterval = setInterval(function(){
-        countDownInt--;
-        timer.textContent = "Time: " + countDownInt;
-    
-        if (countDownInt < 1) {
-            clearInterval (timeInterval);
-        }
-    }, 1000);
-    
-    // timer = 75;
-    // timeInterval = setInterval (timerClick, 75000);
-})
-
-function timerClick() {
-    timer = timeInterval
-}
-
-if (counter === 5) {
-    questionContainer.style.display = "none";
-
-}
 
 
-
-// //when I click start, clear H1 and p and start button
-// function startGame() {
-//     addEventListener("click", function (event) {
-
-//     })
+// function timerClick() {
+//     timer = timeInterval
 // }
-//and replace with question and 4 mult choice answers
-//also need to start timer
-//one choice must be correct answer
+
+// if (counter === 5) {
+//     questionContainer.style.display = "none";
+// }
+
+
+
 //if wrong choice, reduce 10 seconds
-//if correct, change to next question/answers
-//include 5 questions
 //if timer runs out, update text to say final score 0
 //if user gets through questions, log time left as final score
 //have user enter initals and click submit
 //we then need to log user input to local storage
 //AND we need to then log user initals and score to highscores
-
