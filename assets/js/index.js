@@ -5,27 +5,15 @@ var answer2 = document.getElementById('answerB');
 var answer3 = document.getElementById('answerC');
 var answer4 = document.getElementById('answerD');
 var question = document.getElementById('questions');
-var startContainer = document.getElementById('start-page'); 
+var startContainer = document.getElementById('start-page');
 var questionContainer = document.getElementById('questions-container');
 var resultsContainer = document.getElementById('results');
 var counter = 0;
 var currentTime = 0;
 var countDownInt = 75;
 var score = document.getElementById('userScore');
-var timeInterval = setInterval(function(){
-    countDownInt--;
-    timer.textContent = "Time: " + countDownInt;
-    if (counter === 5) {
-        clearInterval (timeInterval);
-        score.textContent = "Your score is " + countDownInt;
-    }
-    else if (countDownInt < 1) {
-        clearInterval (timeInterval);
-        questionContainer.style.display = "none";
-        resultsContainer.style.display = "block";       
-        score.textContent = "Your score is " + 0;
-    }
-}, 1000);
+var timeInterval
+var submitButton = document.getElementById("submit");
 var questions = [
     {
         question: "Which one of these creates a variable?",
@@ -76,25 +64,25 @@ var questions = [
 startButton.addEventListener("click", function (event) {
     startContainer.style.display = "none";
     questionContainer.style.display = "block";
-    var timeInterval = setInterval(function(){
+    timeInterval = setInterval(function () {
         countDownInt--;
         timer.textContent = "Time: " + countDownInt;
         if (counter === 5) {
-            clearInterval (timeInterval);
+            clearInterval(timeInterval);
             score.textContent = "Your score is " + countDownInt;
         }
         else if (countDownInt < 1) {
-            clearInterval (timeInterval);
+            clearInterval(timeInterval);
             questionContainer.style.display = "none";
-            resultsContainer.style.display = "block";       
+            resultsContainer.style.display = "block";
             score.textContent = "Your score is " + 0;
         }
     }, 1000);
-    
+
 })
 
 function timePenalty() {
-    countDownInt -=15;
+    countDownInt -= 15;
 }
 
 function nextQuestion() {
@@ -105,7 +93,7 @@ function nextQuestion() {
     answer4.innerText = questions[counter].d;
     if (counter === 5) {
         questionContainer.style.display = "none";
-        resultsContainer.style.display = "block";   
+        resultsContainer.style.display = "block";
     }
 }
 
@@ -157,21 +145,21 @@ answer4.addEventListener("click", function (event) {
     nextQuestion()
 })
 
+submitButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    var name = document.getElementById('initials').value;
+    console.log(name)
+    var newScore = { name: name, score: countDownInt };
+    console.log(newScore);
+    var items = JSON.parse(localStorage.getItem("scores"));
 
-
-// function timerClick() {
-//     timer = timeInterval
-// }
-
-// if (counter === 5) {
-//     questionContainer.style.display = "none";
-// }
-
-
-
-//if wrong choice, reduce 10 seconds
-//if timer runs out, update text to say final score 0
-//if user gets through questions, log time left as final score
-//have user enter initals and click submit
-//we then need to log user input to local storage
-//AND we need to then log user initals and score to highscores
+    if (items) {
+        items.push(newScore)
+    }
+    else {
+        items = []
+        items.push(newScore)
+    }
+    localStorage.setItem("scores", JSON.stringify(items));
+    window.location.href = "./highscore.html"
+})
