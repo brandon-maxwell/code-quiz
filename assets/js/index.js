@@ -14,6 +14,10 @@ var countDownInt = 75;
 var score = document.getElementById('userScore');
 var timeInterval
 var submitButton = document.getElementById("submit");
+
+//-----------------------------------------------------------------------
+//Array that holds Questions/Answers
+//-----------------------------------------------------------------------
 var questions = [
     {
         question: "Which one of these creates a variable?",
@@ -60,7 +64,9 @@ var questions = [
     },
 ]
 
+//-----------------------------------------------------------------------
 //Starts Game - Clears h1/p/start button & adds questions/options & starts timer
+//-----------------------------------------------------------------------
 startButton.addEventListener("click", function (event) {
     startContainer.style.display = "none";
     questionContainer.style.display = "block";
@@ -83,10 +89,16 @@ startButton.addEventListener("click", function (event) {
 
 })
 
+//-----------------------------------------------------------------------
+//Function to Deduct Time after wrong answer
+//-----------------------------------------------------------------------
 function timePenalty() {
     countDownInt -= 15;
 }
 
+//-----------------------------------------------------------------------
+//Function to call next Question
+//-----------------------------------------------------------------------
 function nextQuestion() {
     question.innerText = questions[counter].question;
     answer1.innerText = questions[counter].a;
@@ -101,7 +113,10 @@ function nextQuestion() {
 
 nextQuestion()
 
-
+//-----------------------------------------------------------------------
+//added event listener to give feedback when answer buttong is clicked
+//user will get different results if wright or wrong answer
+//-----------------------------------------------------------------------
 answer1.addEventListener("click", function (event) {
     if (event.target.textContent === questions[counter].correctAnswer) {
         console.log('you got the correct answer')
@@ -147,6 +162,9 @@ answer4.addEventListener("click", function (event) {
     nextQuestion()
 })
 
+//-----------------------------------------------------------------------
+//User can enter initals and name/score is stored in local storage
+//-----------------------------------------------------------------------
 submitButton.addEventListener('click', function (event) {
     event.preventDefault();
     var name = document.getElementById('initials').value;
