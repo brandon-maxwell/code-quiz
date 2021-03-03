@@ -71,11 +71,13 @@ startButton.addEventListener("click", function (event) {
             clearInterval(timeInterval);
             score.textContent = "Your score is " + countDownInt;
         }
+        
         else if (countDownInt < 1) {
             clearInterval(timeInterval);
             questionContainer.style.display = "none";
             resultsContainer.style.display = "block";
-            score.textContent = "Your score is " + 0;
+            let countDownInt = 0;
+            score.textContent = "Your score is " + countDownInt;
         }
     }, 1000);
 

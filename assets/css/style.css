@@ -76,11 +76,22 @@ li {
     text-align: center;
 }
 
+#input {
+    padding: 20px;
+    text-align: center;
+    background-color:dodgerblue;
+    margin: 0 25%;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+}
+
 .buttons {
     width: 235px;
     height: 35px;
     white-space: nowrap;
     border:0;
+    outline: none;
     line-height: 2.5;
     padding: 0 20px;
     text-align: center;
